@@ -119,13 +119,19 @@ a:hover {
   right: 0;
   z-index: 100;
   height: var(--header-h);
-  transition: background 0.4s var(--ease), box-shadow 0.4s var(--ease);
+  background: rgba(20, 20, 20, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition:
+    background 0.4s var(--ease),
+    box-shadow 0.4s var(--ease),
+    color 0.4s var(--ease);
 }
 
 .site-header.is-scrolled {
-  background: rgba(247, 243, 236, 0.92);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 1px 0 rgba(30, 30, 30, 0.06);
+  background: rgba(247, 243, 236, 0.96);
+  box-shadow: 0 1px 0 rgba(30, 30, 30, 0.08), 0 8px 24px rgba(30, 30, 30, 0.06);
 }
 
 .nav {
@@ -139,11 +145,18 @@ a:hover {
 
 .logo {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 600;
-  color: var(--charcoal);
+  color: var(--white);
   text-decoration: none;
   letter-spacing: 0.02em;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+  transition: color 0.3s var(--ease);
+}
+
+.site-header.is-scrolled .logo {
+  color: var(--charcoal);
+  text-shadow: none;
 }
 
 .nav-links {
@@ -156,25 +169,46 @@ a:hover {
 }
 
 .nav-links a {
-  color: var(--charcoal-soft);
+  color: rgba(255, 255, 255, 0.92);
   text-decoration: none;
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 600;
   transition: color 0.2s;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
 }
 
 .nav-links a:hover {
+  color: var(--white);
+}
+
+.site-header.is-scrolled .nav-links a {
+  color: var(--charcoal-soft);
+  text-shadow: none;
+}
+
+.site-header.is-scrolled .nav-links a:hover {
   color: var(--charcoal);
 }
 
 .nav-cta {
   padding: 0.45rem 1rem;
-  background: var(--charcoal);
-  color: var(--white) !important;
+  background: var(--white);
+  color: var(--charcoal) !important;
   border-radius: 999px;
+  text-shadow: none !important;
 }
 
 .nav-cta:hover {
+  background: var(--teal);
+  color: var(--white) !important;
+}
+
+.site-header.is-scrolled .nav-cta {
+  background: var(--charcoal);
+  color: var(--white) !important;
+}
+
+.site-header.is-scrolled .nav-cta:hover {
   background: var(--sage);
   color: var(--white) !important;
 }
@@ -193,8 +227,14 @@ a:hover {
   display: block;
   width: 22px;
   height: 2px;
+  background: var(--white);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+  transition: transform 0.3s var(--ease), opacity 0.3s, background 0.3s var(--ease);
+}
+
+.site-header.is-scrolled .nav-toggle span {
   background: var(--charcoal);
-  transition: transform 0.3s var(--ease), opacity 0.3s;
+  box-shadow: none;
 }
 
 .nav-toggle[aria-expanded="true"] span:first-child {
